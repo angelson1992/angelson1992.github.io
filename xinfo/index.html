@@ -7,12 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../favicon.ico">
+    <!-- <link rel="icon" href="../../../favicon.ico"> -->
 
     <title>Fanfiction Advanced Filter</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../../../css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -21,40 +21,13 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
+    
+    <link href ="css/bootstrap.min.css" rel ="stylesheet">
     <link href="carousel.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>
-    
-    	document.getElementById("currentPage").value = 0;
-    
-    	function loadStories(){
-    		
-    		var gradeLevel = document.getElementById("gradeLevel").value;
-    		
-    		document.getElementById("currentPage").value = ++currentPage;
-    		
-    		paramURL = url.replace(/&/g, "~");
-    		
-    		document.getElementById("progress").style.display = "block";
-    		document.getElementById("loadButton").style.display = "none";
-    		
-    		var xmlhttp = new XMLHttpRequest();
-    		xmlhttp.onreadystatechange = function() {
-	            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	                document.getElementById("storyList").innerHTML = document.getElementById("storyList").innerHTML + xmlhttp.responseText;
-	                document.getElementById("progress").style.display = "none";
-	                document.getElementById("loadButton").style.display = "initial";
-	            }
-	        }
-	        var params = "gradeLevel=" + gradeLevel;
-	        xmlhttp.open("POST", "filter.php", true);
-	        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xmlhttp.setRequestHeader("Content-length", params.length);
-			xmlhttp.setRequestHeader("Connection", "close");
-	        xmlhttp.send(params);
-	        
-    	}
-    </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     <script src="js/bootstrap.js"></script> 
+<!--     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
     
   </head>
 <!-- NAVBAR
@@ -100,6 +73,10 @@
     </div>
 
 
+
+
+
+
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -123,27 +100,34 @@
 			</select>
 		  </div>
 		  <div class="input-group">
-		  	<span class="input-group-addon">Subject</span>
+		  	<span class="input-group-addon">Subject     </span>
 	  		
 			<select class="form-control" name="subject" id="subject">
-				
+				<option value="k">Math</option>
+        <option value="1">Science</option>
+        <option value="2">History</option>
+        <option value="3">Language Arts</option>
 			</select>
 		  </div>
 		  <div class="input-group">
-		  	<span class="input-group-addon">Course</span>
+		  	<span class="input-group-addon">Course      </span>
 	  		
 			<select class="form-control" name="course" id="course">
-				
+				<option value="k">Geometry</option>
+        <option value="1">Algebra</option>
+        <option value="2">Arithmetic/Operations</option>
 			</select>
 		  </div>
 		  <div class="input-group">
 	  	  	<span class="input-group-addon">Question</span>
 	  		
-			<select class="form-control" name="question" id="question">
+			  <div class="form-group">
+       <input type="question" class="form-control" id="exampleInputPassword1" placeholder="Ask us a question, if you have any">
+       </div>
 				
 			</select>
 		  </div>
-		  <button class="btn btn-lg btn-primary btn-block" id="loadButton" type="button" onclick="loadStories()">Continue</button>
+		  <!-- <button class="btn btn-lg btn-primary btn-block" id="loadButton" type="button" onclick="loadStories()">Continue</button> -->
 		  <div class="progress" id="progress" style="display: none">
   			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
     			<span class="sr-only">100% Complete</span>
@@ -152,26 +136,307 @@
 	  </form>
 	  <br />
 	  <div id="storyList"> </div>
+    </div>
+    
 
-      <!-- FOOTER --><!--
-      <footer class="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; CarryNCare Ltd. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+    <div class="container top-buffer" align="center">
+            <button type="button" class="btn btn-primary openModal" data-toggle="modal" id="sug" data-target="#myModal" align="center" >
+                <h1>Take Quiz!</h1>
+            </button>
+            <button type="button" class="btn btn-primary openModal" data-toggle="modal" id="sug" data-target="#myModal2" align="center" >
+                <h1>Ask Question!</h1>
+            </button>
 
-    <!-- /.container --></div>
+        </div>
+
+
+
+        <!-- START -->
+             <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel" align="center">Question: What are parallel lines?</h2>
+              </div>
+              <div class="modal-body">
+                      <h2>Parallel lines are two lines that are always the same distance apart and never touch. In order for two lines to be parallel, they must be drawn in the same plane, a perfectly flat surface like a wall or sheet of paper.</h2>
+                        <!-- <h2 align="center">Welcome to 4th grade geometry!</h2> -->
+
+                    
+              
+              </div>
+              
+
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END -->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" id="modal1" role="document">
+            <div class="modal-content" id="modal2">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel" align="center">Welcome to 4th grade Geometry!</h2>
+              </div>
+              <div class="modal-body">
+                        <!-- <h2 align="center">Welcome to 4th grade geometry!</h2> -->
+
+                    <div class="mySlides">
+                        <div class="numbertext" align="center">1 / 4</div>
+                          <h2 align="center">Q1: Which lines are parallel, in the figure shown below?</h2>
+                          <img src="question1.png" style="width:80px,height:50px" class="center-block">
+                          
+                          <fieldset class="form-group">
+                      <!-- <legend>Radio buttons</legend> -->
+                      <div class="form-check" align="center">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          a and b
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          c and d
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          e and f
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          Neither of them are parallel
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <script type="text/javascript">var x="c and d"</script>
+                    <div align="center" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" onclick="ShowCorrect(x)" align="center" style="width:20%;height:30%">See Correct Answer</button>
+                    </div>       
+
+                </div>
+
+                <div class="mySlides">
+                        <div class="numbertext" align="center">2 / 4</div>
+                          <h2 align="center">Q2: Which of the lines a and b are lines of symmetry for the rhombus ABCD?</h2>
+                          <img src="question2.png" style="width:80px,height:50px" class="center-block">
+                          
+                          <fieldset class="form-group">
+                      <!-- <legend>Radio buttons</legend> -->
+                      <div class="form-check" align="center">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          a
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          b
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          both a and b
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          neither a or b
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <script type="text/javascript">var x="both a and b"</script>
+                    <div align="center" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" onclick="ShowCorrect(x)" align="center" style="width:20%;height:30%">See Correct Answer</button>
+                    </div>       
+
+              </div>
+
+              <div class="mySlides">
+                        <div class="numbertext" align="center">2 / 4</div>
+                          <h2 align="center">What is the name of the ray in the diagram below?</h2>
+                          <img src="question3.png" style="width:80px,height:50px" class="center-block">
+                          
+                          <fieldset class="form-group">
+                      <!-- <legend>Radio buttons</legend> -->
+                      <div class="form-check" align="center">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          Ray k
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          Ray FJ
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          Ray GK
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          Ray KGJ 
+                        </label>
+                      </div>
+                    </fieldset>
+                     
+                    <script type="text/javascript">var x="Ray GK"</script>
+                    <div align="center" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" onclick="ShowCorrect(x)" align="center" style="width:20%;height:30%">See Correct Answer</button>
+                    </div>       
+
+              </div>
+
+              <div class="mySlides">
+                        <div class="numbertext" align="center">2 / 4</div>
+                          <h2 align="center">Is the triangle below best described as right, acute, or obtuse?</h2>
+                          <img src="question4.png" style="width:80px,height:50px" class="center-block">
+                          
+                          <h2 align="center">Type in the answer and an explanation of how you know your answer is correct.</h2>
+
+                          <div class="form-group" align="center">
+                            <label for="exampleInputAnswer1">Password</label>
+                              <input type="answer" class="form-control" id="exampleInputPassword1" placeholder="Type answer in here">
+                          </div>
+
+                    <script type="text/javascript">var x="Acute because all three angles in the triangle are less than 90 degrees"</script>
+                    <div align="center" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" onclick="ShowCorrect(x)" align="center" style="width:20%;height:30%">See Correct Answer</button>
+                    </div>       
+
+              </div>
+
+              <div class="mySlides">
+                        <div class="numbertext" align="center">2 / 4</div>
+                          <h2 align="center">The center of circle Q has coordinates (3,-2). If circle Q passes through R(7,1), what is the length of its diameter?</h2>
+                          <!-- <img src="question3.png" style="width:80px,height:50px" class="center-block"> -->
+                          
+                          <fieldset class="form-group">
+                      <!-- <legend>Radio buttons</legend> -->
+                      <div class="form-check" align="center">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          50
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          25
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          10
+                        </label>
+                      </div>
+                      <div class="form-check" align="center">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                          5
+                        </label>
+                      </div>
+                    </fieldset>
+                     
+                    <script type="text/javascript">var x="25"</script>
+                    <div align="center" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" onclick="ShowCorrect(x)" align="center" style="width:20%;height:30%">See Correct Answer</button>
+                    </div>       
+
+              </div>
+
+
+<!--     <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+        <img src="graph2.png" style="width:20%;height:30%">
+    </div> -->
+
+<!--     <div class="column">
+      <img class="demo" onclick="currentSlide(1)" alt="Nature">
+    </div>
+
+    <div class="column">
+      <img class="demo" onclick="currentSlide(2)" alt="Trolltunga">
+    </div> -->
+              <div align="center">
+                <button type="button" class="btn btn-primary" onclick="plusSlides(-1)">Prev</button>
+                <button type="button" class="btn btn-primary" onclick="plusSlides(1)">Next</button>
+              </div>
+
+
+              </div>
+              
+
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+   <script>
+
+      $(function () {
+  $(".openModal").click(function(){
+    setTimeout(function(){
+      var h=$(".modal-body .first-content p").height();
+      $(".modal-body").css('height',h+80+'px');
+      $(".modal-body .first-content p").css('height',h+'px');
+    },250);
+  });
+  $('.first-button').on('click', function () {
+    $('.first-content').animate({width:"toggle"}, function(){
+      $('.second-content').animate({width:"toggle"});
+        var h=$(".modal-body .second-content p").height();
+        $(".modal-body").css('height',h+80+'px');
+        $(".modal-body .second-content p").css('height',h+'px');
+      });
+  });
+  $('.second-button').on('click', function () {
+    $('.second-content').animate({width:"toggle"},function(){
+      $('.first-content').animate({width:"toggle"});
+        var h=$(".modal-body .first-content p").height();
+        $(".modal-body").css('height',h+80+'px');
+        $(".modal-body .first-content p").css('height',h+'px');
+    });
+  });
+});
+
+   </script>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     <script src="js/bootstrap.js"></script> 
+
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../../js/bootstrap.min.js"></script>
-    <script>
-		$(function() {
-		    $('img.lazy').lazyload({
-		        //skip_invisible : false
-		    });
-		});
-	</script>
   </body>
 </html>

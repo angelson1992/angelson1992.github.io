@@ -2409,3 +2409,7 @@ function ShowCorrect(n) {
   $('.alert').show();
   alert("The correct answer is "+n);
 }
+
+function SeeVideo(){
+  window.location.href='https://www.youtube.com/watch?v=1_3anRenfwA';
+}
